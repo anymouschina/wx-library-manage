@@ -1,0 +1,36 @@
+<!--pages/detail/detail.wxml-->
+ <van-cell-group class="record-content">
+      <van-field
+        value="{{ form.sbInfo }}"
+        required
+        clearable
+        label="设备信息"
+         error="{{formRule.sbInfo}}"
+        placeholder="点击扫一扫设备二维码"
+        bind:click-icon="scanSbInfo"
+        icon="scan"
+      >
+      </van-field>
+      <van-field
+        value="{{ form.phone }}"
+        label="联系电话"
+        placeholder="请输入手机号码"
+      />
+    </van-cell-group>
+    <view class="form-field-required form-field">故障描述</view>
+    <van-field
+      value="{{ form.discrible }}"
+      type="textarea"
+      border="{{true}}"
+      input-class="border-textarea"
+      error="{{formRule.discrible}}"
+      placeholder="请输入故障描述"
+      autosize
+    />
+    <view class="form-field-required form-field">上传图片(最多1张)</view>
+    <view class="form-field-wrapper">
+      <van-uploader max-count="3" file-list="{{ form.fileList }}" bind:after-read="afterRead" />
+    </view>
+    <view class="position-content-flex-center" >
+      <van-button custom-style="width:214px" bind:click="submit" round   color="#32cd32b3" type="primary">提交</van-button>
+    </view>

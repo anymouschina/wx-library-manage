@@ -1,0 +1,75 @@
+
+<van-tabs nav-class="gray" custom-class="hidden-tabbar-top"  line-width="125" active="{{ active }}" bind:change="onChange">
+  <van-tab title="报缺信息">
+   <van-search
+      value="{{ bookName }}"
+      placeholder="查询已有图书"
+      use-action-slot
+      bind:change="onInputChange"
+      bind:search="onInputSearch"
+    >
+      <view slot="action" bind:tap="scanSbInfo">
+        <view class="flex-center">
+        <van-icon style="font-size:20px" name="scan" />
+        </view>
+      </view>
+    </van-search>
+    <van-grid column-num="3" border="{{ false }}">
+       <van-grid-item use-slot wx:for="{{ bookList }}" wx:key="{{item.title}}" wx:for-item="item">
+          <view class="list-item-wrapper">
+            <van-image
+            width="90%"
+            height="111"
+            fit="fill"
+            lazy-load
+            src="{{item.images.small}}"
+          />
+          <view class="text">{{item.title}}</view>
+          </view>
+        </van-grid-item>
+    </van-grid>
+  </van-tab>
+  <van-tab title="报缺记录">
+    <view class="record-content" id="list">
+     <van-card
+      custom-class="border-bottom"
+      desc="故障描述"
+      title="设备信息"
+      thumb="{{ imageURL }}"
+      thumb-link="{{imageURL}}"
+      bind:click="clickCard"
+      class="item"
+      wx:for="{{6}}"
+      wx:key="{{item}}"
+    >
+      <view slot="footer">
+      <!-- <van-button custom-style="width:44rpx;padding-top:20rpx;padding-bottom:20rpx;text-align:center;height:14px;line-height:14px" bind:click="lookUp"   color="#32cd32b3" type="primary" size="mini">所有图片</van-button> -->
+      <view>2019/12/10</view>
+      </view>
+    </van-card>
+  </view>
+  </van-tab>
+</van-tabs> 
+<van-dialog
+  use-slot
+  title="标题"
+  show="{{ show }}"
+  bind:close="onClose"
+>
+  <image src="https://img.yzcdn.cn/1.jpg" />
+</van-dialog>
+<van-tabbar  active-color="#32cd32"
+  active="{{ active }}" bind:change="onChangeTab">
+  <van-tabbar-item  icon="wap-home-o">图书</van-tabbar-item>
+  <van-tabbar-item  icon="logistics">书籍状态</van-tabbar-item>
+  <van-tabbar-item  icon="contact">以书会友</van-tabbar-item>
+  <van-tabbar-item  icon="chart-trending-o">排行榜</van-tabbar-item>
+  <van-tabbar-item  icon="setting-o">个人中心</van-tabbar-item>
+</van-tabbar>
+<view wx:if="{{showToast}}" class="toast" bindtap='clearToast'>
+  <view class="toast-card">
+    <p class="toast-title">提示</p>
+    <p class="toast-desc">需要授权登录才能投票哦～</p>
+    <button class="toast-button" open-type="getUserInfo" bindgetuserinfo="onGotUserInfo">授权登录</button>
+  </view>
+</view>

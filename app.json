@@ -1,0 +1,33 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/detail/detail",
+    "pages/login/login"
+  ],
+  "usingComponents": {
+    "van-search": "../components/search/index",
+    "van-button": "../components/button",
+    "van-tab": "../components/tab/index",
+    "van-tabs": "../components/tabs/index",
+    "van-field": "../components/field/index",
+    "van-cell": "../components/cell/index",
+    "van-cell-group": "../components/cell-group/index",
+    "van-uploader": "../components/uploader/index",
+    "van-card": "../components/card/index",
+    "van-dialog": "../components/dialog/index",
+    "van-tabbar": "../components/tabbar/index",
+    "van-tabbar-item": "../components/tabbar-item/index",
+    "van-icon": "../components/icon/index",
+    "van-grid": "../components/grid/index",
+    "van-grid-item": "../components/grid-item/index",
+    "van-image": "../components/image/index"
+  },
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "书言",
+    "navigationBarTextStyle": "black"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

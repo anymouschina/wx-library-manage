@@ -1,0 +1,11 @@
+/* pages/login/login.wxss */
+.flex-center{
+  display:flex;
+  justify-content:center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.page-wrapper{
+  height:50vh;
+  width: 100%;
+}

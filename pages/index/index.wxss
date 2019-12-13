@@ -1,0 +1,79 @@
+/**index.wxss**/
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.text{
+   overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    word-break: break-all;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+.list-item-wrapper{
+  padding: 1px;
+  height:99%;
+  width:99%;
+}
+.flex-center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.form-field-required::before {
+  position: absolute;
+  content: "*";
+  left: 8px;
+  font-size: 14px;
+  color: #ee0a24;
+}
+.hidden-tabbar-top van-sticky{
+  display: none;
+}
+.record-content{
+  margin-bottom: 106rpx;
+}
+.border-bottom{
+  border-bottom: 1px solid #eeeeee;
+}
+.position-content-flex-center{
+  display: flex;
+  justify-content: center;
+}
+.border-textarea{
+  height: 206rpx !important;
+  background-color: #eeeeee!important;
+  /* border: 1rpx solid #323233!important; */
+  margin-top: 10rpx!important;
+  border-radius: 20rpx;
+  padding:5rpx!important;
+}
+.form-field{
+  padding: 10px 16px;
+  color:#323233;
+  font-size:14px;
+}
+.form-field-wrapper{
+  padding: 10px 16px;
+}
+.gray .van-tabs__line{
+  background: #333333;
+}
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+.textarea-class{
+  /* background: red !important; */
+}
+.usermotto {
+  margin-top: 200px;
+}

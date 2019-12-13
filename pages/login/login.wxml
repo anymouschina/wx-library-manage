@@ -1,0 +1,4 @@
+<view class="flex-center page-wrapper">
+  <view>你需要授权才能使用所有功能。</view>
+  <view><van-button open-type="getUserInfo"  bind:getuserinfo="onGetUserInfo" type="primary">点击授权</van-button></view>
+</view>
