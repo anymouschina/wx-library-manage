@@ -1,1 +1,35 @@
 /* pages/detail/detail.wxss */
+.wrapper{
+  height:100%;
+  width:100%;
+}
+.button-item{
+  width: 100% !important;
+
+}
+.bt-wrapper{
+  width:100%;
+}
+.image{
+  /* margin-left:10%; */
+}
+.flex-inline{
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100%;
+}
+.flex-item{
+  flex:1;
+  width:33%;
+}
+.text{
+  padding-left: 10%;
+}
+.van-cell__title{
+  flex:4 !important;
+}
+.flex-center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,36 +1,51 @@
-<!--pages/detail/detail.wxml-->
- <van-cell-group class="record-content">
-      <van-field
-        value="{{ form.sbInfo }}"
-        required
-        clearable
-        label="设备信息"
-         error="{{formRule.sbInfo}}"
-        placeholder="点击扫一扫设备二维码"
-        bind:click-icon="scanSbInfo"
-        icon="scan"
-      >
-      </van-field>
-      <van-field
-        value="{{ form.phone }}"
-        label="联系电话"
-        placeholder="请输入手机号码"
-      />
-    </van-cell-group>
-    <view class="form-field-required form-field">故障描述</view>
-    <van-field
-      value="{{ form.discrible }}"
-      type="textarea"
-      border="{{true}}"
-      input-class="border-textarea"
-      error="{{formRule.discrible}}"
-      placeholder="请输入故障描述"
-      autosize
-    />
-    <view class="form-field-required form-field">上传图片(最多1张)</view>
-    <view class="form-field-wrapper">
-      <van-uploader max-count="3" file-list="{{ form.fileList }}" bind:after-read="afterRead" />
+<van-card
+  price="{{detail.price}}"
+  desc="{{detail.author[0]+'/'+detail.publisher+'/'+detail.pubdate}}"
+  title="{{detail.title}}"
+  thumb="{{detail.images.medium }}"
+>
+  <view slot="footer" class="flex-inline">
+  <!-- <van-grid column-num="3" class="bt-wrapper"  border="{{ false }}">
+       <van-grid-item use-slot >
+         <van-button custom-class="button-item"  >借出</van-button>
+        </van-grid-item><van-grid-item use-slot >
+         <van-button custom-class="button-item"  >出售</van-button>
+        </van-grid-item><van-grid-item use-slot >
+         <van-button custom-class="button-item" >捐赠</van-button>
+        </van-grid-item>
+    </van-grid> -->
+  </view>
+</van-card>
+<van-collapse value="{{ activeNames }}" bind:change="onChange" accordion>
+  <van-collapse-item title="简介" name="1">
+    <view class="text">
+        <text style="width:80%">{{detail.summary}}</text>
     </view>
-    <view class="position-content-flex-center" >
-      <van-button custom-style="width:214px" bind:click="submit" round   color="#32cd32b3" type="primary">提交</van-button>
+  </van-collapse-item>
+  <van-collapse-item title="作者描述" name="2">
+      <view class="text">
+        <text style="width:80%">{{detail.author_intro}}</text>
     </view>
+  </van-collapse-item>
+   <van-collapse-item title="目录" name="3">
+      <view class="text">
+        <text style="width:80%">{{detail.catalog}}</text>
+    </view>
+  </van-collapse-item>
+</van-collapse>
+<!-- <view class="wrapper">
+ <van-panel title="{{detail.title}}" desc="{{detail.summary}}" status="状态">
+  <view class=" image wrapper">
+  <van-image
+              width="100%"
+              height="300"
+              fit="fill"
+              lazy-load
+              src="{{detail.imgUrl}}"
+  />
+  </view>
+ <view class="text">
+    <text style="width:80%">{{detail.catalog}}</text>
+ </view>
+</van-panel>
+</view> -->

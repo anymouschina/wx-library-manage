@@ -14,8 +14,8 @@
         </view>
       </view>
     </van-search>
-    <van-grid column-num="3" border="{{ false }}">
-       <van-grid-item use-slot wx:for="{{ bookList }}" wx:key="{{item.title}}" wx:for-item="item">
+    <van-grid column-num="3" class="book-item"  border="{{ false }}">
+       <van-grid-item use-slot wx:for="{{ bookList }}" bind:click="lookDetail"  mark:detail="{{item}}"  wx:key="item" wx:for-item="item">
           <view class="list-item-wrapper">
             <van-image
             width="90%"
@@ -30,7 +30,7 @@
     </van-grid>
   </van-tab>
   <van-tab title="报缺记录">
-    <view class="record-content" id="list">
+    <view class="record-content">
      <van-card
       custom-class="border-bottom"
       desc="故障描述"
@@ -43,7 +43,6 @@
       wx:key="{{item}}"
     >
       <view slot="footer">
-      <!-- <van-button custom-style="width:44rpx;padding-top:20rpx;padding-bottom:20rpx;text-align:center;height:14px;line-height:14px" bind:click="lookUp"   color="#32cd32b3" type="primary" size="mini">所有图片</van-button> -->
       <view>2019/12/10</view>
       </view>
     </van-card>
@@ -61,15 +60,26 @@
 <van-tabbar  active-color="#32cd32"
   active="{{ active }}" bind:change="onChangeTab">
   <van-tabbar-item  icon="wap-home-o">图书</van-tabbar-item>
-  <van-tabbar-item  icon="logistics">书籍状态</van-tabbar-item>
+  <!-- <van-tabbar-item  icon="logistics">书籍状态</van-tabbar-item>
   <van-tabbar-item  icon="contact">以书会友</van-tabbar-item>
-  <van-tabbar-item  icon="chart-trending-o">排行榜</van-tabbar-item>
-  <van-tabbar-item  icon="setting-o">个人中心</van-tabbar-item>
+  <van-tabbar-item  icon="chart-trending-o">书豪榜</van-tabbar-item>
+  <van-tabbar-item  icon="setting-o">个人中心</van-tabbar-item> -->
 </van-tabbar>
-<view wx:if="{{showToast}}" class="toast" bindtap='clearToast'>
+
+<!-- <view wx:if="{{showToast}}" class="toast" bindtap='clearToast'>
   <view class="toast-card">
     <p class="toast-title">提示</p>
     <p class="toast-desc">需要授权登录才能投票哦～</p>
     <button class="toast-button" open-type="getUserInfo" bindgetuserinfo="onGotUserInfo">授权登录</button>
   </view>
-</view>
+</view> -->
+  <van-dialog
+  use-slot
+  title="提示"
+  show="{{ showLoading }}"
+  show-cancel-button="{{false}}"
+  show-confirm-button="{{false}}"
+>
+  <van-loading type="spinner" color="#32cd32" custom-class="loading flex-center">数据正在加载中...</van-loading>
+</van-dialog>
+<van-dialog id="van-dialog" />

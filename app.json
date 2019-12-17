@@ -6,6 +6,7 @@
   ],
   "usingComponents": {
     "van-search": "../components/search/index",
+    "van-panel": "../components/panel/index",
     "van-button": "../components/button",
     "van-tab": "../components/tab/index",
     "van-tabs": "../components/tabs/index",
@@ -20,12 +21,15 @@
     "van-icon": "../components/icon/index",
     "van-grid": "../components/grid/index",
     "van-grid-item": "../components/grid-item/index",
-    "van-image": "../components/image/index"
+    "van-image": "../components/image/index",
+    "van-loading": "../components/loading/index",
+    "van-collapse": "../components/collapse/index",
+    "van-collapse-item": "../components/collapse-item/index"
   },
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "书言",
+    "navigationBarTitleText": "人人仓库",
     "navigationBarTextStyle": "black"
   },
   "style": "v2",
