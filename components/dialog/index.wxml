@@ -62,8 +62,10 @@
       binderror="bindError"
       bindlaunchapp="bindLaunchApp"
       bindopensetting="bindOpenSetting"
+      
     >
-      {{ confirmButtonText }}
+    <view style="color:#00b09b"> {{ confirmButtonText }}</view>
+     
     </van-button>
   </view>
 </van-popup>

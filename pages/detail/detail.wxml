@@ -2,18 +2,10 @@
   price="{{detail.price}}"
   desc="{{detail.author[0]+'/'+detail.publisher+'/'+detail.pubdate}}"
   title="{{detail.title}}"
-  thumb="{{detail.images.medium }}"
+  thumb="{{detail.image}}"
 >
   <view slot="footer" class="flex-inline">
-  <!-- <van-grid column-num="3" class="bt-wrapper"  border="{{ false }}">
-       <van-grid-item use-slot >
-         <van-button custom-class="button-item"  >借出</van-button>
-        </van-grid-item><van-grid-item use-slot >
-         <van-button custom-class="button-item"  >出售</van-button>
-        </van-grid-item><van-grid-item use-slot >
-         <van-button custom-class="button-item" >捐赠</van-button>
-        </van-grid-item>
-    </van-grid> -->
+     <van-button custom-class="button-item" bind:click="toggleBook" type="{{!detail.collected?'primary':'warning'}}"  >{{!detail.collected?'加入书架':'移出书架'}}</van-button>
   </view>
 </van-card>
 <van-collapse value="{{ activeNames }}" bind:change="onChange" accordion>

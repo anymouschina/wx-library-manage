@@ -16,6 +16,7 @@
 .flex-inline{
   display: flex;
   flex-wrap: nowrap;
+  justify-content: flex-end;
   width: 100%;
 }
 .flex-item{

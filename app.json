@@ -24,13 +24,18 @@
     "van-image": "../components/image/index",
     "van-loading": "../components/loading/index",
     "van-collapse": "../components/collapse/index",
-    "van-collapse-item": "../components/collapse-item/index"
+    "van-collapse-item": "../components/collapse-item/index",
+    "van-skeleton": "../components/skeleton/index",
+    "van-divider": "../components/divider/index",
+    "van-checkbox": "../components/checkbox/index",
+    "van-checkbox-group": "../components/checkbox-group/index"
   },
   "window": {
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "人人仓库",
-    "navigationBarTextStyle": "black"
+      "navigationBarBackgroundColor": "#00b09b",
+      "navigationBarTextStyle": "black",
+      "navigationBarTitleText": "因书而见众体之书",
+      "backgroundColor": "#00b09b",
+      "backgroundTextStyle": "light"
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json"

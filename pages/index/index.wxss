@@ -4,7 +4,22 @@
   flex-direction: column;
   align-items: center;
 }
+.text-desc{
+   overflow: hidden;
+    text-overflow: ellipsis;
+    margin-top: 5px;
+    color: #646566;
+    font-size: 14px;
+    display: -webkit-box;
+    word-break: break-all;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+}
 .text{
+    margin-top: 5px;
+    color: #646566;
+    font-size: 14px;
+    text-align: center;
    overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
@@ -12,15 +27,77 @@
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
 }
+.flex-between{
+  display: flex;
+  justify-content: space-between;
+}
+.top-tools{
+  position: fixed;
+  right: 0;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: 9999;
+  transition:0.5s;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  background-color: #fff;
+
+}
+.flex-auto-1{
+  flex:1;
+}
+.transition{
+  transition: .8s;
+}
+.hidden{
+  width:0;
+  height:0;
+  overflow: hidden;
+}
+.flex-center-both{
+  position: absolute;
+  right: 62rpx;
+  top: 198rpx;
+  background: none
+}
+.flex-auto-9{
+  flex:9;
+}
+.text-center{
+  text-align: center;
+  padding:5rpx;
+}
+.showTop{
+  height:100rpx;
+}
+.top100rpx{
+  margin-top:100rpx;
+}
+.record-content{
+  margin-bottom: 106rpx;
+  transition:0.5s;
+}
+.top0rpx{
+  margin-top:0rpx;
+}
+.hiddenTop{
+  height:0rpx;
+}
 .list-item-wrapper{
   padding: 1px;
   height:99%;
-  width:99%;
+  width:66%;
 }
 .flex-center{
   display: flex;
   justify-content: center;
   align-items: center;
+}
+page{
+  /* background: #00b09b; */
 }
 .form-field-required::before {
   position: absolute;
@@ -29,11 +106,32 @@
   font-size: 14px;
   color: #ee0a24;
 }
+.image-shadow{
+  box-shadow: 0 8px 12px #ebedf0;
+}
+.random-item{
+  margin-bottom:10rpx;
+}
+.login-tip{
+  
+}
+.userLogin{
+  padding: 1rem;
+  display: flex;
+  background: #00b09b !important;  /* fallback for old browsers */
+}
+.login{
+  padding:1rem;
+}
+.flex-auto{
+  flex:1;
+}
+.round-img{
+  border-radius: 50%;
+  background:white;
+}
 .hidden-tabbar-top van-sticky{
   display: none;
-}
-.record-content{
-  margin-bottom: 106rpx;
 }
 .border-bottom{
   border-bottom: 1px solid #eeeeee;

@@ -1,9 +1,47 @@
 
 <van-tabs nav-class="gray" custom-class="hidden-tabbar-top"  line-width="125" active="{{ active }}" bind:change="onChange">
-  <van-tab title="报缺信息">
+  <van-tab title="首页" class="record-content">
+  <van-search
+      value="{{ itemName }}"
+      placeholder="输入指定书名"
+      use-action-slot
+      bind:search="onSearchChange"
+    >
+    </van-search>
+  <view wx:for="{{randomList}}" class="random-item" wx:for-item="item" wx:key="item" bindtap="lookDetail"  mark:detail="{{item}}">
+      <van-skeleton
+      title
+      avatar
+      row="3"
+      loading="{{item.loading}}"
+    >
+      <van-card
+        thumb="{{ item.image }}"
+        thumb-class="image-shadow"
+      >
+      <view slot="desc">
+         <view class="text-desc">{{item.summary}}</view>
+      </view>
+      <view slot="title">
+        <view class="flex-between">
+          <view>{{item.title}}</view>
+          <view><span  style="font-size:14px">{{item.rating.average}}</span>分</view>
+        </view>
+    </view>
+      <view slot="footer">
+       {{item.author[0]}}
+    </view>
+</van-card>
+    </van-skeleton>
+    <!-- <van-divider /> -->
+  </view>
+  </van-tab>
+  <van-tab title="扫码">
+  </van-tab>
+  <van-tab title="报缺信息"  bindlongtap="longtap" custom-class="record-content {{status==='longtap'?'top100rpx':'top0rpx'}}">
    <van-search
       value="{{ bookName }}"
-      placeholder="查询已有图书"
+      placeholder="查询已有图书或扫描条形码"
       use-action-slot
       bind:change="onInputChange"
       bind:search="onInputSearch"
@@ -15,21 +53,27 @@
       </view>
     </van-search>
     <van-grid column-num="3" class="book-item"  border="{{ false }}">
-       <van-grid-item use-slot wx:for="{{ bookList }}" bind:click="lookDetail"  mark:detail="{{item}}"  wx:key="item" wx:for-item="item">
+       <van-grid-item use-slot wx:for="{{ bookList }}" bind:click="lookDetail"  mark:detail="{{item}}" mark:index="{{index}}"  wx:key="item"                       wx:for-item="item">
           <view class="list-item-wrapper">
             <van-image
             width="90%"
             height="111"
             fit="fill"
+            custom-class="image-shadow"
             lazy-load
-            src="{{item.images.small}}"
-          />
+            src="{{item.image}}"
+          >
+          sadsadsa
+          </van-image>
+          <view class="transition {{status==='longtap'?'flex-auto-1 flex-center-both':'hidden'}}"> 
+            <van-checkbox  checked-color="#00b09b" value="{{choosedList[index]}}"></van-checkbox>
+          </view>
           <view class="text">{{item.title}}</view>
           </view>
         </van-grid-item>
     </van-grid>
   </van-tab>
-  <van-tab title="报缺记录">
+  <!-- <van-tab title="报缺记录">
     <view class="record-content">
      <van-card
       custom-class="border-bottom"
@@ -47,21 +91,26 @@
       </view>
     </van-card>
   </view>
+  </van-tab>-->
+  <van-tab title="个人" >
+    <view class="userLogin" bindtap="login">
+       <van-image width="5rem"
+      height="5rem"
+   round src="{{userInfo.avatarUrl}}"></van-image>
+        <view class="flex-auto" >
+          <view  class="login">{{userInfo.nickName===''?'点击登陆':userInfo.nickName}}</view>
+        </view>
+    </view>
+    
   </van-tab>
 </van-tabs> 
-<van-dialog
-  use-slot
-  title="标题"
-  show="{{ show }}"
-  bind:close="onClose"
->
-  <image src="https://img.yzcdn.cn/1.jpg" />
-</van-dialog>
 <van-tabbar  active-color="#32cd32"
   active="{{ active }}" bind:change="onChangeTab">
-  <van-tabbar-item  icon="wap-home-o">图书</van-tabbar-item>
-  <!-- <van-tabbar-item  icon="logistics">书籍状态</van-tabbar-item>
-  <van-tabbar-item  icon="contact">以书会友</van-tabbar-item>
+  <van-tabbar-item  icon="wap-home-o">推荐</van-tabbar-item>
+  <van-tabbar-item  bindtap="scanSbInfo" icon="scan">扫码</van-tabbar-item>
+  <van-tabbar-item  icon="logistics">书架</van-tabbar-item>
+  <van-tabbar-item  icon="setting-o">个人</van-tabbar-item>
+  <!-- <van-tabbar-item  icon="contact">以书会友</van-tabbar-item>
   <van-tabbar-item  icon="chart-trending-o">书豪榜</van-tabbar-item>
   <van-tabbar-item  icon="setting-o">个人中心</van-tabbar-item> -->
 </van-tabbar>
@@ -82,4 +131,25 @@
 >
   <van-loading type="spinner" color="#32cd32" custom-class="loading flex-center">数据正在加载中...</van-loading>
 </van-dialog>
-<van-dialog id="van-dialog" />
+<van-dialog
+  use-slot
+  title="需要您的授权"
+  show="{{ show }}"
+  show-cancel-button
+  confirm-button-open-type="getUserInfo"
+  bind:close="onClose"
+  confirmButtonText="我知道了"
+  cancelButtonText="暂不授权"
+  bind:getuserinfo="onGetUserInfo"
+  className="login-tip"
+>
+  <text class="text" style="height:4rem;">
+    为了更好的服务，请在稍后的提示框点击"允许"
+  </text>
+</van-dialog>
+<view  class="top-tools {{status?'showTop':'hiddenTop'}}">
+    <view class="flex-auto-1 text-center" bindtap="allChoosed">全选</view>
+    <view class="flex-auto-1 text-center">已选中{{choosedNum}}条</view>
+    <view class="flex-auto-1 text-center" bindtap="cancelDelete">取消</view>
+    <view class="flex-auto-1 text-center" bindtap="deleteAll">删除</view>
+ </view>
